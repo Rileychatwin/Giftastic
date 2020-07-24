@@ -5,15 +5,21 @@ $(document).ready(function () {
     var deButt = "";
     var queryURL = "";
     var results = "";
+    var mainDiv;
+    var gifDiv;
 
     function makeButton(theArray,) {
+        mainDiv = $("<div>");
+
         for (var i = 0; i < theArray.length; i++) {
             deButt = $("<button>");
-            $("#button-area").append(deButt);
+            $(mainDiv).append(deButt);
             deButt.addClass("btn-class");
             deButt.text(theArray[i]);
             deButt.data("dataType", theArray[i]);
+
         };
+        $('#button-area').html(mainDiv);
     };
     $(document).on("click", ".btn-class", function () {
         var title = $(this).data("dataType");
@@ -27,7 +33,7 @@ $(document).ready(function () {
 
             .then(function (response) {
                 results = response.data;
-
+               gifDiv = $("<div>");
                 for (var i = 0; i < results.length; i++) {
                     var animeDiv = $("<div class='mx-auto'>");
 
@@ -41,9 +47,11 @@ $(document).ready(function () {
                     animeIMG.addClass("gif");
 
                     $(animeDiv).append(animeIMG, rating);
-                    $("#gif-button").prepend(animeDiv);
+                    $(gifDiv).append(animeDiv);
 
                 }
+                $("#gif-button").html(gifDiv);
+               
 
             });
 
@@ -57,20 +65,22 @@ $(document).ready(function () {
                 $(this).attr("data-state", "still");
             }
         });
-        function addButt(){
-            $("<button/>",{
-                text: $("#gif-imput").val(),
-                class: "btn-class",
-                id: $("#gif-imput").val(),
-            });
-        }
         // new button only adds if gifs are on the page
-        $("#add-gif").on("click", function (event) {
-            event.preventDefault();
-            addButt()
-            console.log(this.addButt);
+        
+    });
 
-        });
+    $("#add-gif").on("click", function (event) {
+        event.preventDefault();
+        var gifText = $('#gif-input').val();
+
+        //check to see if the item already exists before push
+        if (animeButton.indexOf(gifText) === -1) {
+            animeButton.push(gifText);
+            makeButton(animeButton);
+          
+          }
+        
+
     });
 
     makeButton(animeButton);
