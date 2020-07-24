@@ -1,11 +1,4 @@
-#button-area {
-    margin-top: auto;
-    width: 70%;
-}
-.btn-class {
-    float: left;
-    padding: 10px;
-  }
+
 body {
     font: 18px arial, sans-serif;
     background: #eee;
@@ -19,7 +12,7 @@ form {
   label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 700;
+    font-size: 18px;
   }
   
   input[type="text"] {
@@ -36,18 +29,24 @@ form {
     font-size: 18px;
     color: #fff;
     cursor: pointer;
-    background: #659a98;
+    background: #dab3ff;
     border: 0;
     border-radius: 5px;
     box-shadow: 2px 2px 3px #bbb;
   }
-  
-  button:hover,
-  input[type="submit"]:hover {
-    background: #334e4d;
+
+  button,
+  input[type="reset"] {
+    padding: 5px 20px;
+    margin: 0 10px 10px 0;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background: #dab3ff;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #bbb;
   }
+#gif-button{
   
-  button.active {
-    background: #334e4d;
-  }
-  
+}
